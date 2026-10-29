@@ -1,0 +1,84 @@
+print("Bienvenido a la Taquilla del Museo de antropologia ")
+precio = 45
+precio_menor = 30
+
+# validar la edad
+while True:
+    try:
+        edad = int(input("Eres el siguiente, ingresa tu edad: "))
+    except ValueError:
+        print("Error: ingresa la edad usando numeros.")
+
+    if edad < 0 or edad > 110:
+        print("Edad no válida. Intenta de nuevo.")
+        continue
+
+    print("Si eres estudiante, profesor o mayor de edad se te aplicara el descuento que te corresponda")
+
+    # validar precio
+    if edad >= 60:
+        descuento = precio * 0.12
+        total = precio - descuento
+        print("Adulto mayor, descuento del 12% mayor")
+        print("El descuento que se realizó es de:", descuento)
+        print("El precio final es:", total)
+        break
+
+    elif edad < 60 and edad > 17:
+
+        # validar tipo de visitante
+        while True:
+            try:
+                tipo = int(input("Eres profesor (1), estudiante (2) o (3) ninguna: "))
+
+                if tipo < 1 or tipo > 3:
+                    print("Opción inválida. Ingresa 1, 2 o 3.")
+                    continue
+
+                break
+
+            except ValueError:
+                print("Error: ingresa una opción usando numeros.")
+
+        if tipo == 1:
+            descuento = precio * 0.10
+            total = precio - descuento
+            print("Profesor, descuento de profesor")
+            print("El descuento que se realizó es de:", descuento)
+            print("El precio final es:", total)
+
+        elif tipo == 2:
+            descuento = precio * 0.10
+            total = precio - descuento
+            print("Estudiante, descuento de estudiante")
+            print("El descuento que se realizó es de:", descuento)
+            print("El precio final es:", total)
+
+        elif tipo == 3:
+            descuento = 0
+            total = precio - descuento
+            print("No tienes descuento, el precio se mantiene igual")
+            print("El precio final es:", total)
+
+    elif edad < 18 and edad >= 3:
+        descuento = 0
+        total = precio_menor
+        print("Entrada de menor de edad, sin descuento")
+        print("El precio final es:", total)
+        break
+
+    elif edad < 3:
+        descuento = 0
+        total = 0
+        print("No pagas entrada pequeñuelo")
+        print("El precio final es:", total)
+        break
+
+    else:
+        print("El descuento que se realizó es de:", descuento)
+        print("El precio final es:", total)
+
+    final = input("Escribe fin si ya quedo tu total: ")
+
+    if final.lower()== "fin":
+        print("Gracias por tu visita, nos vemos en tu proxima visita")
